@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Links-->
+        {% load static %}
+        <base href="./">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <!--Swiper CSS-->
+        <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+        <!--CSS-->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!--Api Call-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Galeria</title>
+        <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    </head>
+
+<body>
+    
+    <main class="mainB">
+        
+    </main>
+    
+    <!--Swiper JS-->
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <!--Main JS-->
+    <script src="{% static 'js/main.js' %}"></script>
+    <!--API Call-->
+    <script src="{% static 'js/apicall.js' %}"></script>
+</body>
+</html>
+{% endblock %}

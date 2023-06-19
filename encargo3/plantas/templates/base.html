@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Links-->
+        {% load static %}
+        <base href="./">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <!--Swiper CSS-->
+        <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+        <!--CSS-->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <title>document</title>
+        <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    </head>
+<body>
+    <!--Header-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">EcoSana</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+
+                    {% if user.is_authenticated %}
+                    <li class="nav__item">
+                        <a href="{% url 'logout' %}"  class="nav__link">
+                            <i class="uil uil-estate nav__icon"></i> Cerrar session
+                        </a>
+                    </li>
+
+                    {% else %}
+
+                    <li class="nav__item">
+                        <a href="{% url 'login' %}"  class="nav__link">
+                            <i class="uil uil-estate nav__icon"></i> Iniciar session
+                        </a>
+                    </li>
+                    {% endif%}
+                    {% if user.is_authenticated %}
+                    <li class="nav__item">
+                        <a href="{% url 'index' %}" class="nav__link">
+                            <i class="uil uil-estate nav__icon"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'sobreNosotros' %}" class="nav__link">
+                            <i class="uil uil-info nav__icon"></i> Sobre Nosotros
+                        </a>
+                    </li>
+                    
+                    <li class="nav__item">
+                        <a href="{% url 'tienda' %}" class="nav__link">
+                            <i class="uil uil-shop nav__icon"></i> Tienda
+                        </a>
+                    </li>
+                    
+                    <li class="nav__item">
+                        <a href="#shopping-cart" class="nav__link">
+                            <i class="uil uil-shopping-cart nav__icon"></i> Carrito
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'galeria' %}" class="nav__link">
+                            <i class="uil uil-image nav__icon"></i> Galeria
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'contacto' %}" class="nav__link">
+                            <i class="uil uil-message nav__icon"></i> Contacto
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav__item">
+                        <a href="{% url 'tienda' %}" class="nav__link">
+                            <i class="uil uil-shop nav__icon"></i> Tienda
+                        </a>
+                    </li>
+                    {% endif%}
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
+            
+            <div class="nav__btns">
+                <!--Theme Change button-->
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        </nav>   
+    </header>
+    
+    
+
+    {% block content %} 
+    {% endblock %}
+    
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">EcoSana</h1>
+                    <span class="footer__subtitle">Cultivando un futuro mejor <br> </span>
+                    <span class="footer__subtitle">Av. Esquina Blanca 501</span>
+                    <p> <br> </p>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#contactus" class="footer__link">Contacto</a>
+                        </li>
+                    </ul>
+                    <p> <br> </p>
+                    <div class="footer__socials">
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="uil uil-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="uil uil-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="uil uil-twitter-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="footer__copy">&#169; Copyright. Todos los derechos Reservados,<br>para Fernando Cavada y Martin Villena</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- script que permite mostrar/ocultar navbar haciendo scroll -->
+    <script type="text/javascript">
+        let ubicacionInicial = window.pageYOffset;
+        window.onscroll = function () {
+            let ubicacionPosterior = window.pageYOffset;
+            if (ubicacionInicial >= ubicacionPosterior) {
+                document.getElementById("barraNav").style.top = "0";
+            }
+            else {
+                document.getElementById("barraNav").style.top = "-70px";
+            }
+            ubicacionInicial = ubicacionPosterior
+        }
+    </script>
+</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../static/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+    <script src="{% static 'js/validacion.js' %}"></script>
+
+</html>
